@@ -41,5 +41,18 @@ int main()
     presenterRef(v1); // ici, on se retrouve bien avec la méthode propre à chaque classe
     presenterRef(v2); // c'est grace au fait qu'on utilise ici une méthode virtuelle: virtual afficheVirtual() const;
     presenterRef(m1); // et que l'on passe une reference à un Vehicule en argument, et non un Vehicule (ça marcherait aussi avec un pointeur)
+
+    Vehicule *v3, *v4;
+    v3 = new Vehicule();
+    v4 = new Moto();
+
+    cout << "Avec des pointeurs, en utilisant la méthode affiche" << endl;
+    v3->affiche();
+    v4->affiche();
+
+    cout << "Avec des pointeurs, en utilisant la méthode virtuelle afficheVirtual" << endl;
+    v3->afficheVirtual();
+    v4->afficheVirtual();
+
     return 0;
 }
