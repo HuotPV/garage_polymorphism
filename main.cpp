@@ -54,5 +54,9 @@ int main()
     v3->afficheVirtual();
     v4->afficheVirtual();
 
+    // cas de figure du destructeur:
+    delete v3; // ici c'est le destructeur de Vehicule qui est appelé dans les deux cas, et pas celui de Moto
+    delete v4; // alors que v4 est une Moto
+
     return 0;
 }

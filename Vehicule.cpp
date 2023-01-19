@@ -19,6 +19,8 @@ void Vehicule::afficheVirtual() const
     cout << "Nom: " << m_nom << endl;
     cout << "Prix: " << m_prix << endl;
 }
+Vehicule::~Vehicule() //Même si le destructeur ne fait rien, on doit le mettre !
+{}
 
 
 void Voiture::affiche() const
@@ -33,6 +35,9 @@ void Voiture::afficheVirtual() const
     cout << "Nombre de portes: " << m_portes << endl;
 
 }
+Voiture::~Voiture() //Même si le destructeur ne fait rien, on doit le mettre !
+{}
+
 
 void Moto::affiche() const
 {
@@ -46,4 +51,6 @@ void Moto::afficheVirtual() const
     cout << "Vitesse max.: " << m_vitesse << endl;
 
 }
+Moto::~Moto() //Même si le destructeur ne fait rien, on doit le mettre !
+{}
 
