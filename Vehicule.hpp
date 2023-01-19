@@ -10,31 +10,33 @@ class Vehicule
     public:
     Vehicule();
     void affiche() const;  //Affiche une description du Vehicule
+    virtual void afficheVirtual() const;  //Affiche une description du Vehicule
 
     protected:
     std::string m_nom;
     int m_prix;  //Chaque véhicule a un prix
 };
 
-class Voiture : Vehicule
+class Voiture : public Vehicule // attention à ne pas oublier le public ici
 {
     public:
     void affiche() const;
+    virtual void afficheVirtual() const;
     Voiture();
 
     protected: 
     int m_portes;
 };
 
-class Moto : Vehicule
+class Moto : public Vehicule
 {
     public:
     void affiche() const;
+    virtual void afficheVirtual() const;
     Moto();
 
     protected: 
     double m_vitesse;
 };
-
 
 #endif // VEHICULE_H_INCLUDED

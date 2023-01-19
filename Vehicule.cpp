@@ -14,11 +14,22 @@ void Vehicule::affiche() const
     cout << "Nom: " << m_nom << endl;
     cout << "Prix: " << m_prix << endl;
 }
+void Vehicule::afficheVirtual() const
+{
+    cout << "Nom: " << m_nom << endl;
+    cout << "Prix: " << m_prix << endl;
+}
 
 
 void Voiture::affiche() const
 {
     Vehicule::affiche();
+    cout << "Nombre de portes: " << m_portes << endl;
+
+}
+void Voiture::afficheVirtual() const
+{
+    Vehicule::afficheVirtual();
     cout << "Nombre de portes: " << m_portes << endl;
 
 }
@@ -29,3 +40,10 @@ void Moto::affiche() const
     cout << "Vitesse max.: " << m_vitesse << endl;
 
 }
+void Moto::afficheVirtual() const
+{
+    Vehicule::afficheVirtual();
+    cout << "Vitesse max.: " << m_vitesse << endl;
+
+}
+
