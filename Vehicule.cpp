@@ -6,8 +6,8 @@
 using namespace std;
 
 
-Vehicule::Vehicule() : m_nom("Vehicule"), m_prix(10000), m_annee(2000), m_roues(4){}
-Vehicule::Vehicule(int prix, int annee) : m_nom("Vehicule"), m_prix(prix), m_annee(annee), m_roues(4){}
+Vehicule::Vehicule() : m_nom("Vehicule"), m_prix(10000), m_annee(2000){}
+Vehicule::Vehicule(int prix, int annee) : m_nom("Vehicule"), m_prix(prix), m_annee(annee){}
 
 
 void Vehicule::affiche() const
@@ -22,9 +22,9 @@ void Vehicule::afficheVirtual() const
     cout << "Prix: " << m_prix << endl;
     cout << "Annee de fabrication: " << m_annee << endl;
 }
-int Vehicule::getRoues() const
+int Vehicule::getRoues() const  // dans le cas ou on passerait la méthode getRoues en méthode virtuelle pure, il n'y aurait plus besoin de la définir ici.
 {
-    return m_roues;
+    return 4;
 }
 
 Vehicule::~Vehicule()
@@ -34,9 +34,9 @@ Vehicule::~Vehicule()
 Voiture::Voiture() : Vehicule(), m_portes(5){}
 Voiture::Voiture(int prix, int annee, int portes) : Vehicule(prix,annee), m_portes(portes){}
 Moto::Moto() : Vehicule(), m_vitesse(360){}
-Moto::Moto(int prix, int annee, int vitesse) : Vehicule(prix,annee), m_roues(2), m_vitesse(vitesse){}
+Moto::Moto(int prix, int annee, int vitesse) : Vehicule(prix,annee),  m_vitesse(vitesse){}
 Camion::Camion() : Vehicule(), m_poids(35){}
-Camion::Camion(int prix, int annee, int poids) : Vehicule(prix,annee), m_roues(6), m_poids(poids){}
+Camion::Camion(int prix, int annee, int poids) : Vehicule(prix,annee),  m_poids(poids){}
 Garage::Garage() : m_listeVehicules(0){}
 
 void Garage::ajoutVehicule(Vehicule* inVehicule) // ici j'utilise le pointeur inVehicule en entrée ...
@@ -80,7 +80,7 @@ void Voiture::afficheVirtual() const
 }
 int Voiture::getRoues() const
 {
-    return m_roues;
+    return 4;
 }
 Voiture::~Voiture() //Même si le destructeur ne fait rien, on doit le mettre !
 {}
@@ -99,7 +99,7 @@ void Moto::afficheVirtual() const
 }
 int Moto::getRoues() const
 {
-    return m_roues;
+    return 2;
 }
 Moto::~Moto() //Même si le destructeur ne fait rien, on doit le mettre !
 {}
@@ -119,7 +119,7 @@ void Camion::afficheVirtual() const
 }
 int Camion::getRoues() const
 {
-    return m_roues;
+    return 6;
 }
 Camion::~Camion() //Même si le destructeur ne fait rien, on doit le mettre !
 {}
