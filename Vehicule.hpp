@@ -4,19 +4,21 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 class Vehicule
 {
     public:
     Vehicule();
-    Vehicule(int prix);
+    Vehicule(int prix, int annee);
     void affiche() const;  //Affiche une description du Vehicule
     virtual void afficheVirtual() const;  //Affiche une description du Vehicule
+    virtual int getRoues() const;  // ici, si je n'avais pas utilisé une methode virtuelle, alors Moto.getRoues() et Camion.getRoues() m'auraient renvoyé 4.
     virtual ~Vehicule();          //Remarquez le 'virtual' ici
 
     protected:
     std::string m_nom;
-    int m_prix;  //Chaque véhicule a un prix
+    int m_prix, m_annee, m_roues;  //Chaque véhicule a un prix et une année de fabriacation
 };
 
 class Voiture : public Vehicule // attention à ne pas oublier le public ici
@@ -24,8 +26,9 @@ class Voiture : public Vehicule // attention à ne pas oublier le public ici
     public:
     void affiche() const;
     virtual void afficheVirtual() const;
+    virtual int getRoues() const;
     Voiture();
-    Voiture(int prix, int portes);
+    Voiture(int prix, int annee, int portes);
 
     virtual ~Voiture();          //Remarquez le 'virtual' ici
 
@@ -39,12 +42,46 @@ class Moto : public Vehicule
 
     void affiche() const;
     virtual void afficheVirtual() const;
+    virtual int getRoues() const;
     Moto();
-    Moto(int prix, int vitesse);
+    Moto(int prix, int annee,int vitesse);
     virtual ~Moto();          //Remarquez le 'virtual' ici
 
     protected: 
     double m_vitesse;
+    int m_roues;
 };
+
+class Camion : public Vehicule
+{
+    public:
+
+    void affiche() const;
+    virtual void afficheVirtual() const;
+    virtual int getRoues() const;
+    Camion();
+    Camion(int prix, int annee, int poids);
+    virtual ~Camion();          //Remarquez le 'virtual' ici
+
+    protected: 
+    int m_poids, m_roues;
+};
+
+
+
+class Garage
+{
+    public:
+
+    Garage();
+    void ajoutVehicule(Vehicule* inVehicule); // ici, j'ai mis un pointeur Vehicule, pas sûr que ce soit la bonne méthode, mais ça fonctionne ...
+    void retraitVehicule(int i);
+    void afficherVehicules();
+    int getNombreVehicules();
+
+    protected:
+    std::vector<Vehicule*> m_listeVehicules;
+};
+
 
 #endif // VEHICULE_H_INCLUDED
