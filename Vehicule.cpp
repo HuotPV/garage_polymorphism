@@ -5,8 +5,11 @@
 using namespace std;
 
 Vehicule::Vehicule() : m_nom("Vehicule"), m_prix(10000){}
+Vehicule::Vehicule(int prix) : m_nom("Vehicule"), m_prix(prix){}
 Voiture::Voiture() : Vehicule(), m_portes(5){}
+Voiture::Voiture(int prix, int portes) : Vehicule(prix), m_portes(portes){}
 Moto::Moto() : Vehicule(), m_vitesse(360){}
+Moto::Moto(int prix, int vitesse) : Vehicule(prix), m_vitesse(vitesse){}
 
 
 void Vehicule::affiche() const

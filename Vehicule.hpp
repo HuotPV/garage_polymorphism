@@ -9,6 +9,7 @@ class Vehicule
 {
     public:
     Vehicule();
+    Vehicule(int prix);
     void affiche() const;  //Affiche une description du Vehicule
     virtual void afficheVirtual() const;  //Affiche une description du Vehicule
     virtual ~Vehicule();          //Remarquez le 'virtual' ici
@@ -24,6 +25,8 @@ class Voiture : public Vehicule // attention à ne pas oublier le public ici
     void affiche() const;
     virtual void afficheVirtual() const;
     Voiture();
+    Voiture(int prix, int portes);
+
     virtual ~Voiture();          //Remarquez le 'virtual' ici
 
     protected: 
@@ -33,9 +36,11 @@ class Voiture : public Vehicule // attention à ne pas oublier le public ici
 class Moto : public Vehicule
 {
     public:
+
     void affiche() const;
     virtual void afficheVirtual() const;
     Moto();
+    Moto(int prix, int vitesse);
     virtual ~Moto();          //Remarquez le 'virtual' ici
 
     protected: 
